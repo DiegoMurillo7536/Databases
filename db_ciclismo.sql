@@ -1,136 +1,228 @@
--- MariaDB dump 10.19  Distrib 10.4.24-MariaDB, for Win64 (AMD64)
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: db_ciclismo
--- ------------------------------------------------------
--- Server version	10.4.24-MariaDB
+-- Host: localhost
+-- Generation Time: Nov 18, 2022 at 05:54 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Database: `db_ciclismo`
+--
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `ciclista`
 --
 
-DROP TABLE IF EXISTS `ciclista`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ciclista` (
   `dorsal` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `añonacim` date NOT NULL,
   `nomequipo` varchar(50) NOT NULL,
-  `tiempo` float DEFAULT NULL,
-  PRIMARY KEY (`dorsal`),
-  KEY `nomequipo` (`nomequipo`),
-  CONSTRAINT `ciclista_ibfk_1` FOREIGN KEY (`nomequipo`) REFERENCES `equipo` (`nomequipo`)
+  `tiempo` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `ciclista`
 --
 
-LOCK TABLES `ciclista` WRITE;
-/*!40000 ALTER TABLE `ciclista` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ciclista` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `ciclista` (`dorsal`, `nombre`, `añonacim`, `nomequipo`, `tiempo`) VALUES
+(1, 'Devin Fochs', '1990-10-08', 'Brex', 35.1),
+(8, 'Kati Wix', '1985-05-12', 'American Express', 24.5),
+(10, 'Sabina Clitsome', '1992-06-19', 'Citigroup', 27),
+(15, 'Denney Partlett', '2004-05-11', 'Anthem', 17.2),
+(19, 'Barret Janoschek', '1985-04-19', 'Brex', 6.3),
+(20, 'Todd Ewbanche', '1993-05-15', 'Citigroup', 37.5),
+(21, 'Shanta Geer', '1995-05-24', 'Anthem', 36.4),
+(34, 'Harbert Blowne', '1989-01-01', 'American Express', 14.9),
+(35, 'Tansy Tiffney', '2000-07-02', 'Citigroup', 35.9),
+(41, 'Babara Keppe', '1985-04-22', 'Brex', 22.1),
+(42, 'Agnes Mincher', '1988-12-12', 'Citigroup', 24.3),
+(45, 'Nerita Gounin', '2002-02-28', 'Brex', 38.7),
+(53, 'Bernete De Coursey', '1995-06-02', 'Anthem', 18.8),
+(56, 'Allis Le Batteur', '1986-11-23', 'FedEx', 34.5),
+(61, 'Milli Irwin', '1990-02-08', 'Anthem', 38.5),
+(65, 'Sybila Maryan', '1984-05-07', 'American Express', 33.3),
+(72, 'Janek Dooley', '1997-09-28', 'Home Depot', 18.5),
+(76, 'Kellia Rolingson', '1993-06-08', 'FedEx', 39),
+(78, 'Mic Mourbey', '2000-02-22', 'Home Depot', 24.9),
+(80, 'Kaylyn Ilchenko', '2003-06-29', 'American Express', 5.8),
+(81, 'Angelo Rotte', '1990-11-17', 'FedEx', 14.7),
+(86, 'Valene Pimmocke', '1988-05-27', 'Anthem', 2.8),
+(88, 'Katherine Delatour', '1999-07-19', 'American Express', 32.9);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `equipo`
 --
 
-DROP TABLE IF EXISTS `equipo`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `equipo` (
   `nomequipo` varchar(50) NOT NULL,
-  `director` varchar(50) NOT NULL,
-  PRIMARY KEY (`nomequipo`)
+  `director` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `equipo`
 --
 
-LOCK TABLES `equipo` WRITE;
-/*!40000 ALTER TABLE `equipo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `equipo` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `equipo` (`nomequipo`, `director`) VALUES
+('American Express', 'Denis Loache'),
+('Anthem', 'Domini Codner'),
+('Brex', 'Denis Docherty'),
+('Citigroup', 'Delphinia Barrick'),
+('Comcast', 'King Turton'),
+('FedEx', 'Caron Cameli'),
+('Home Depot', 'Gwen Carnoghan'),
+('HP', 'Ferdinande Nind'),
+('Intel', 'Mickie Windrum'),
+('PepsiCo', 'Cletus Boswell'),
+('Progressive', 'Filmer Sambiedge'),
+('Salesforce', 'Cammie Johanning'),
+('Segment', 'Darrin Gwillim'),
+('Slack', 'Anita Manketell'),
+('State Farm Insurance', 'Myca Pikett'),
+('Stripe', 'Neron Vlasyuk'),
+('United Airlines', 'Niccolo Egdale'),
+('Walt Disney', 'Ajay Guy');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `etapa`
 --
 
-DROP TABLE IF EXISTS `etapa`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `etapa` (
   `numetapa` int(11) NOT NULL,
   `kms` float NOT NULL,
   `salida` varchar(50) NOT NULL,
   `llegada` varchar(50) NOT NULL,
-  `dorsal` int(11) NOT NULL,
-  PRIMARY KEY (`numetapa`),
-  KEY `dorsal` (`dorsal`),
-  CONSTRAINT `etapa_ibfk_1` FOREIGN KEY (`dorsal`) REFERENCES `ciclista` (`dorsal`)
+  `dorsal` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `etapa`
 --
 
-LOCK TABLES `etapa` WRITE;
-/*!40000 ALTER TABLE `etapa` DISABLE KEYS */;
-/*!40000 ALTER TABLE `etapa` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `etapa` (`numetapa`, `kms`, `salida`, `llegada`, `dorsal`) VALUES
+(1, 166.5, 'Shawnee Mission', 'Lijiang', 1),
+(2, 176.3, 'Stradbally', 'Shiyuetian', 8),
+(3, 116.4, 'Liberia', 'Zhongshan', 10),
+(4, 189.9, 'Puerto Cumarebo', 'Hongyuan', 15),
+(5, 109.7, 'Marsabit', 'Vannes', 19),
+(6, 153.5, 'Isojoki', 'Bazzāryah', 20),
+(7, 156.3, 'Turan', 'Xinhuang', 21),
+(8, 104.6, 'Stepanovićevo', 'Qixing', 34),
+(9, 142, 'Néa Plágia', 'Ngadipuro', 35),
+(10, 162.1, 'Quinta', 'Changning', 41),
+(11, 191.5, 'Yanhong', 'Lavradio', 42),
+(12, 104.1, 'Shreveport', 'Santa Maria', 45),
+(13, 182.6, 'Shixi', 'Qızılhacılı', 53),
+(14, 149.5, 'Dagkar', 'Burnaby', 56),
+(15, 109.5, 'Medvedok', 'Uluale', 61),
+(16, 185.8, 'Wonocolo', 'Sunja', 65),
+(17, 147, 'Fenghuangdong', 'Sikasso', 72),
+(18, 186.1, 'Patani', 'Néa Róda', 76),
+(19, 111.8, 'Brisbane', 'Guanabacoa', 78),
+(20, 170.3, 'Sinarbakti', 'Dongyang', 80),
+(21, 159.6, 'Florencio Sánchez', 'Harrisburg', 81),
+(22, 171.3, 'Krzemieniewo', 'Modot', 86),
+(23, 158, 'Själevad', 'Saseel', 88);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `puerto`
 --
 
-DROP TABLE IF EXISTS `puerto`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `puerto` (
   `nompuerto` varchar(50) NOT NULL,
   `altura` float NOT NULL,
   `categoria` varchar(50) NOT NULL,
   `pendiente` int(11) NOT NULL,
   `numetapa` int(11) NOT NULL,
-  `dorsal` int(11) NOT NULL,
-  KEY `dorsal` (`dorsal`),
-  KEY `numetapa` (`numetapa`),
-  CONSTRAINT `puerto_ibfk_1` FOREIGN KEY (`dorsal`) REFERENCES `ciclista` (`dorsal`),
-  CONSTRAINT `puerto_ibfk_2` FOREIGN KEY (`numetapa`) REFERENCES `etapa` (`numetapa`)
+  `dorsal` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `puerto`
 --
 
-LOCK TABLES `puerto` WRITE;
-/*!40000 ALTER TABLE `puerto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `puerto` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `puerto` (`nompuerto`, `altura`, `categoria`, `pendiente`, `numetapa`, `dorsal`) VALUES
+('Philippines', 73, 'Crime|Drama', 92, 1, 1),
+('Philippines', 73, 'Crime|Drama', 92, 1, 8),
+('China', 38.2, 'Comedy', 57, 3, 10),
+('Greece', 70.7, 'Drama', 42, 4, 10),
+('Oman', 50.6, 'Comedy|Drama', 92, 5, 61);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `ciclista`
+--
+ALTER TABLE `ciclista`
+  ADD PRIMARY KEY (`dorsal`),
+  ADD KEY `nomequipo` (`nomequipo`);
+
+--
+-- Indexes for table `equipo`
+--
+ALTER TABLE `equipo`
+  ADD PRIMARY KEY (`nomequipo`);
+
+--
+-- Indexes for table `etapa`
+--
+ALTER TABLE `etapa`
+  ADD PRIMARY KEY (`numetapa`),
+  ADD KEY `dorsal` (`dorsal`);
+
+--
+-- Indexes for table `puerto`
+--
+ALTER TABLE `puerto`
+  ADD KEY `dorsal` (`dorsal`),
+  ADD KEY `numetapa` (`numetapa`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `ciclista`
+--
+ALTER TABLE `ciclista`
+  ADD CONSTRAINT `ciclista_ibfk_1` FOREIGN KEY (`nomequipo`) REFERENCES `equipo` (`nomequipo`);
+
+--
+-- Constraints for table `etapa`
+--
+ALTER TABLE `etapa`
+  ADD CONSTRAINT `etapa_ibfk_1` FOREIGN KEY (`dorsal`) REFERENCES `ciclista` (`dorsal`);
+
+--
+-- Constraints for table `puerto`
+--
+ALTER TABLE `puerto`
+  ADD CONSTRAINT `puerto_ibfk_1` FOREIGN KEY (`dorsal`) REFERENCES `ciclista` (`dorsal`),
+  ADD CONSTRAINT `puerto_ibfk_2` FOREIGN KEY (`numetapa`) REFERENCES `etapa` (`numetapa`);
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2022-11-16 17:34:06
